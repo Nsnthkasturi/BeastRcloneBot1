@@ -1,11 +1,10 @@
 #!/bin/bash
 
-if [[ -n $RCLONE_CONFIG ]]; then
-	wget $RCLONE_CONFIG
+if [[ -n $RCLONE_CONFIG_LINK ]]; then
 	echo "Rclone config detected"
+	wget -P /app/.config/rclone $RCLONE_CONFIG_LINK
 	#echo "$(echo $RCLONE_CONFIG_BASE64|base64 -d)" >> rclone.conf
-    mkdir -p /app/.config/rclone
-	wget -P /app/.config/rclone $RCLONE_CONFIG
+    #mkdir -p /app/.config/rclone
 	#echo "[DRIVE]" > /app/.config/rclone/rclone.conf
 fi
 
